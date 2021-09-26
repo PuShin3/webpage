@@ -1,0 +1,43 @@
+<html>
+<body>
+    <script type="text/javascript">
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+    <script type="text/javascript">
+        async function change()
+        {
+            var elem = document.getElementById("bt1");
+            for (let i = 0; i < 3; i++)
+            {
+                elem.textContent = "Searching";
+                await sleep(500);
+                for (let r = 0; r < 3; r++)
+                {
+                    elem.textContent = elem.textContent + '.';
+                    await sleep(500);
+                }
+            }
+            window.location.replace("https://www.youtube.com/watch?v=a3Z7zEc7AXQ");
+        }
+    </script>
+    <script>
+        function enable()
+        {
+            var elem = document.getElementById("in1");
+            if (elem.value)
+            {
+                document.getElementById("bt1").disabled = false;
+            }
+            else
+            {
+                document.getElementById("bt1").disabled = true;
+            }
+        }
+    </script>
+    <input id="in1" type="text" name="topics" oninput="enable()" style="width:180px;height:30px;font-size:20px;">
+    <button id="bt1" type="button" onClick="change()" style="width:120px;height:30px;font-size:20px;" disabled>search</button>
+    <strong>Type a keyword, then the program will find a random youtube video which title contains the keyword!</strong>
+</body>
+</html>
